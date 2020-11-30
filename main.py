@@ -25,10 +25,7 @@ class randomReader:
             self.engine.runAndWait()
 
     def welcome(self, name):
-        self.tts('hello ' + name)
-        self.tts('How are you?')
-        self.tts('...Are you ready for your test?')
-        self.tts('Lets begin!...')
+        self.tts('hello ' + name + '. How are you?' + '...Are you ready for your test?' + 'Lets begin!...')
 
     def printWords(self, source):
         print("Total number of words: " + str(len(self.words)))
@@ -89,8 +86,10 @@ class randomReader:
             wc += 1
             # Only test words that were spelled incorrectly
             if (self.testGrade[self.testArr[w]] == 0):
+                print ("[Word " + str(wc) + "] Please type your answer: ")
                 self.tts('' + self.testArr[w])
-                answer = input("[Word " + str(wc) + "] Please type your answer: ")
+                answer = input ("")
+                # answer = input("[Word " + str(wc) + "] Please type your answer: ")
                 if (answer.lower() == self.testArr[w].lower()):
                     print ("Awesome! that correct :)")
                     self.tts('Thats right!')
