@@ -116,7 +116,12 @@ class RandomReader:
 
 
 if __name__ == "__main__":
-    rr = RandomReader(str(Path.home()) + "/Desktop/words.txt")
+    my_file = str(Path.home()) + "/Desktop/words.txt"
+    if os.path.exists(my_file) == False:
+        print("File does not exists")
+        exit(0)
+
+    rr = RandomReader(my_file)
     rr.welcome("Jonathan")
 
     grade = rr.test("reset")
