@@ -16,7 +16,7 @@ class randomReader:
         #self.engine.setProperty('voice', voices[1].id)
 
     def tts(self, text):
-        if (platform == "darwin"):
+        if platform == "darwin":
             # iOS
             os.system("say " + text)
         else:
