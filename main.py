@@ -18,6 +18,7 @@ class RandomReader:
         self.testArr = {}
         self.testGrade = {}
         self.engine = pyttsx3.init()
+        self.engine.setProperty("rate", 170)
 
         # Alternate voices
         # voices = self.engine.getProperty('voices')
