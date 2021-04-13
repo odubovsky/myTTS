@@ -93,19 +93,30 @@ class RandomReader:
         wc = 0
         for w in range(len(self.testArr)):
             wc += 1
+            answer = ""
+
             # Only test words that were spelled incorrectly
             if self.testGrade[self.testArr[w]] == 0:
-                print("[Word " + str(wc) + "] Please type your answer: ")
-                self.tts('' + self.testArr[w])
-                answer = input("")
-                # answer = input("[Word " + str(wc) + "] Please type your answer: ")
+                while answer == "":
+                    print("[Word " + str(wc) + "] Please type your answer or [r]epeat | [s]kip: ")
+                    self.tts('' + self.testArr[w])
+                    answer = input("")
+
+                    if (answer.lower() == "r"):
+                        answer = ""
+
                 if answer.lower() == self.testArr[w].lower():
-                    print("Awesome! that correct :)")
+                    print("Awesome! that's correct :)")
                     self.tts('Thats right!')
                     self.testGrade[self.testArr[w]] = 1
                 else:
-                    print("That's wrong :( Here's how it should be spelled:")
-                    self.tts('Oooops...that was wrong')
+                    if answer.lower() != "s":
+                        print("That's wrong :( Here's how it should be spelled:")
+                        self.tts('Oooops...that was wrong')
+                    else:
+                        print("Skipping...")
+                        self.tts('Okay, I will skip this word')
+
                     self.tts(' ' + self.testArr[w] + ' is spelled:')
                     for char in range(len(self.testArr[w])):
                         if self.testArr[w][char] == " ":
