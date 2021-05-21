@@ -9,7 +9,7 @@ class RandomReader:
     def __init__(self, inputfile):
         # Verify that file exists or create one with one word (Welcome)
         if os.path.exists(my_file) == False:
-            print("File does not exists. Creating new words.txt file.")
+            print("File does not exist. Creating new words.txt file.")
             f = open(my_file, "w+")
             f.write("Welcome")
             f.close()
